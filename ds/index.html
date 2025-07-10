@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width= , initial-scale=1.0">
+    <title>Список студентов</title>
+</head>
+
+<body bgcolor="#fff8f0">
+    <div>
+        <form onsubmit="submitHandler()">
+            <h1>Добавление нового студента</h1>
+            <div>
+                <label for="name">Имя</label>
+                <input id="name" required></input>
+            </div>
+            <div>
+                <label for="estimation">Оценка</label>
+                <select name="estimation" id="estimation">
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+            </div>
+            <button type="submit">Сохранить</button>
+        </form>
+    </div>
+    <script>
+        function submitHandler(e){
+            console.log(e)
+            alert("Сохранение")
+        }
+    </script>
+
+</body>
+
+</html>
