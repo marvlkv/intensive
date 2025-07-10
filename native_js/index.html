@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Трекер привычек</title>
 </head>
+
 <body>
     <div>
         <form onsubmit="submitHandler()">
@@ -11,35 +13,37 @@
                 <label for="habit-name">Название привычки</label>
                 <input id="habit-name"></input>
             </div>
+            <br>
             <div>
                 <label for="description">Опсание привычки</label>
-                <input id="description"></input>
-            </div> 
+                <textarea id="description" required></textarea>
+            </div>
+            <br>
             <div>
                 <label for="frequency">Частота выполнеия</label>
-                <section id="frequency">
+                <select id="frequency">
                     <option value="1">Каждый день</option>
                     <option value="2">Раз в неделю</option>
                     <option value="3">Раз в месяц</option>
-                </section>
+                </select>
             </div>
-            <br/>
+            <br>
             <div>
                 <label for="count">Количество повторений</label>
-                <input id="count"></input>
+                <input id="count" type="number"></input>
             </div>
-            <br/>
-            <div>Общее количество выполнения <span id="sum" ></span></div>
+            <br>
+            <div>Общее количество выполнения <span id="sum"></span></div>
             <button type="submit">Сохранить</button>
-            <button type="submit">Простое нажатие</button>
-            <div></div>
-            <script>
-                function submitHandler(e){
-                    console.log(e)
-                    alert("Сохранение")
-                }
-            </script>
+            <button type="button">Простое нажатие</button>
         </form>
     </div>
+    <script>
+        function submitHandler(e) {
+            console.log(e)
+            alert("Сохранение")
+        }
+    </script>
 </body>
+
 </html>
