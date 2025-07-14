@@ -1,17 +1,72 @@
 console.log("Скрипт запущен")
 alert("Точно")
+const habit = {
+    name: '',
+    description: '',
+    frequency: 0,
+    count: 0,
+    sum: 0
+}
+const nameMeta = {
+    selector: document.querySelector('#habit-name'),
+    handler:(ev) => {
+        habit.name = ev.target.value;
+        console.log(name);
+    }
+}
+const descriptionMeta = {
+    selector: document.querySelector('#description'),
+    handler:(ev) => {
+        habit.description = ev.target.value;
+        console.log(description);
+    }
+}
+const frequencyMeta = {
+    selector: document.querySelector('#frequency'),
+    handler:(ev) => {
+        habit.frequency = ev.target.value;
+        console.log(frequency);
+    }
+}
+const countMeta = {
+    selector: document.querySelector('#count'),
+    handler:(ev) => {
+        habit.count = ev.target.value;
+        console.log(count);
+    }
+}
+const sumMeta = {
+    selector:document.querySelector('#sum'),
+    handler:(ev) => {
+        habit.sum = ev.target.value;
+        console.log(sum);
+    }
+}
 
-let name = '';
-let description = '';
-let frequency = 0;
-let count = 0;
-let sum = 0;
+const metaData = [nameMeta];
+for(const {selector, handler} of metaData){
+    if(selector.tagName.toLowerCase()=='select'){
+        selector.addEventListener('cange',handler)
+    }
+    else{
+        selector.addEventListener('input',handler)
+    }
+}
 
-const nameInput = document.querySelector('#habit-name');
-const descriptionInput =  document.querySelector('#description');
-const frequencySelect = document.querySelector('frequency#');
-const countInput = document.querySelector('#count');
-const sumElement = document.querySelector('#sum');
+
+
+
+// let name = '';
+// let description = '';
+// let frequency = 0;
+// let count = 0;
+// let sum = 0;
+
+// const nameInput = document.querySelector('#habit-name');
+// const descriptionInput =  document.querySelector('#description');
+// const frequencySelect = document.querySelector('#frequency');
+// const countInput = document.querySelector('#count');
+// const sumElement = document.querySelector('#sum');
 
 console.log(nameInput,descriptionInput,frequencySelect,countInput,sumElement);
 
@@ -27,9 +82,10 @@ function descriptionInputHandler(ev){
 }
 descriptionInput.addEventListener('input', descriptionInputHandler);
 
+const sumElement = document.querySelector('#sum');
 function setSum(ev){
-    sum = frequency * count;
-    sumElement.textContent = sum.toString();
+    habit.sum = habit.frequency * habit.count;
+    sumElement.textContent = habit.sum.toString();
 }
 setSum();
 
@@ -61,5 +117,8 @@ countInput.addEventListener('input',countInputHandler)
 const formElem = document.querySelector('form');
 formElem.addEventListener('submit',(ev) => {
     ev.preventDefault();
-    console.log(name,description,frequency,count,sum);
+    for(const key in habit){
+        console.log(habit.key,habit[key]);
+    }
+    console.log(JSON.stringify(habit));
 });
