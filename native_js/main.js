@@ -21,6 +21,16 @@ function nameInputHandler(ev){
 }
 nameInput.addEventListener('input','nameInputHandler');
 
+function descriptionInputHandler(ev){
+    description = ev.target.value;
+    console.log(description);
+}
+descriptionInput.addEventListener('input', descriptionInputHandler);
+
+function setSum(ev){
+    sum = frequency * count;
+    sumElement.textContent = sum.toString();
+}
 setSum();
 
 function frequencyChange(ev){
@@ -35,7 +45,6 @@ function frequencyChange(ev){
 }
 frequencySelect.addEventListener('change',frequencyChange)
 
-
 function countInputHandler(ev){
     if(ev.target.value==undefined){
         count= 0;
@@ -47,10 +56,6 @@ function countInputHandler(ev){
     console.log(count);
 }
 
-function setSum(){
-    sum = frequency * count;
-    sumElement.textContent = sum.toString();
-}
 countInput.addEventListener('input',countInputHandler)
 
 const formElem = document.querySelector('form');
