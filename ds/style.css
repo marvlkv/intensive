@@ -25,7 +25,7 @@ label{
 }
 
 input, select {
-  padding: 5px 0px;      /* Отступы сверху/снизу */
+  padding: 5px 0px 5px 5px;      /* Отступы сверху/снизу */
   margin: 5px;
   border: 1px solid #ccc; /* Серая рамка */
   border-radius: 4px;     /* Скругленные углы */
@@ -36,6 +36,12 @@ input, select {
    margin: 10px;
    border-radius: 4px;
 } */
+
+.container > form {
+  display: flex;
+  flex-direction: column;  /* Расположение элементов в колонку */
+}
+
 
 button[type=submit] {
   margin-top: 20px;
