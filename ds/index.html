@@ -12,24 +12,26 @@
     <div class="conteiner">
         <form onsubmit="submitHandler()">
             <h1>Добавление нового студента</h1>
-            <div>
-                <label for="name">Имя</label>
-                <input id="name" required></input>
-            </div>
-            <div>
-                <label for="estimation">Оценка</label>
-                <select name="estimation" id="estimation">
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                </select>
+            <div class="conteiner-form">
+                <div>
+                    <label for="name">Имя</label>
+                    <input id="name" required></input>
+                </div>
+                <div>
+                    <label for="estimation">Оценка</label>
+                    <select name="estimation" id="estimation">
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </div>
             </div>
             <button type="submit">Сохранить</button>
         </form>
     </div>
     <script>
-        function submitHandler(e){
+        function submitHandler(e) {
             console.log(e)
             alert("Сохранение")
         }
