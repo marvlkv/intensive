@@ -8,13 +8,12 @@ const label = ref();
 watch(() => {
     return { name: habit.name, description: habit.description}
     },(newVal) => {
-    label.value = `${newVal.name} ${newVal.description}`
-},{deep:true,imediate:true})
-
+    label.value = `${newVal?.name} ${newVal?.description}`
+},{deep: true,immediate: true})
 </script>
 <template>
     <div class="container">
-        <form onsubmit="submitHandler()">
+        <form>
             <h1>Трекер привычек</h1>
             {{ label }}
             <div>
@@ -29,7 +28,7 @@ watch(() => {
             <br>
             <div>
                 <label for="frequency">Частота выполнеия</label>
-                <select v-model.trim="habit.frequency" id="frequency">
+                <select v-model="habit.frequency" id="frequency">
                     <option value="1">Каждый день</option>
                     <option value="2">Раз в неделю</option>
                     <option value="3">Раз в месяц</option>
@@ -38,7 +37,7 @@ watch(() => {
             <br>
             <div>
                 <label for="count">Количество повторений</label>
-                <input v-model.trim="habit.count" id="count" type="number"></input>
+                <input v-model.number="habit.count" id="count" type="number"></input>
             </div>
             <br>
             <div>Общее количество выполнения <span id="sum">{{ sum }}</span></div>
