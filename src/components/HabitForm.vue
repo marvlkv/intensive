@@ -22,12 +22,12 @@ watch(() => {
             </div>
             <br>
             <div>
-                <label for="description">Опсание привычки</label>
+                <label for="description">Описание привычки</label>
                 <textarea v-model.trim="habit.description" id="description" required></textarea>
             </div>
             <br>
             <div>
-                <label for="frequency">Частота выполнеия</label>
+                <label for="frequency">Частота выполнения</label>
                 <select v-model="habit.frequency" id="frequency">
                     <option value="1">Каждый день</option>
                     <option value="2">Раз в неделю</option>

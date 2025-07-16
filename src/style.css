@@ -64,6 +64,8 @@ button:focus-visible {
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  display: grid;
+  grid-template-columns: 1fr minmax(20rem,auto);
 }
 
 @media (prefers-color-scheme: light) {
