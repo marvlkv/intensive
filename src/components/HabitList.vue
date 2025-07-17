@@ -1,5 +1,7 @@
 <script setup>
 import { reactive } from 'vue';
+import HabitListItem from './HabitListItem.vue';
+const emits = defineEmits({'select:habit':(ev)=>{return true;}})
 
 const habitList = reactive([
     {
@@ -9,8 +11,8 @@ const habitList = reactive([
         count: 365 
     },
     {
-        name: "Бег",
-        description: "Бег в 7:00",
+        name: "Бокс",
+        description: "Бег в 12:00",
         frequency: 1,
         count: 365
     },
@@ -20,18 +22,19 @@ const deleteHandler = (idx) =>{
     habitList.splice(idx,1)
 }
 </script>
+
 <template>
     <ul class="list">
-        <li v-for="(item,idx) in habitList":key="idx" class="list-item">
-            <div v-text="item.name"></div>
-            <div v-text="item.description"></div>
-            <p>
-                <template v-if="item.frequency === 1">Каждый день</template>
-                <template v-else-if="item.frequency === 7">Раз в неделю </template>
-                <template v-else="item.frequency === 30">Раз в месяц</template>
-            </p>
+        <HabitListItem v-for="(item,idx) in habitList"
+            :item="item"
+            :key="idx"
+            @click="$emit('select:habit',item)"
+            class="list-item">
+            <template #action >
             <button @click.stop="deleteHandler(idx)">Удалить</button>
-        </li>
+            </template>
+        </HabitListItem>
+    
     </ul>
 </template>
 
