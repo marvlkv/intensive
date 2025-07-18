@@ -1,5 +1,5 @@
 <script setup>
-import { reactive } from 'vue';
+import { onMounted, reactive } from 'vue';
 import HabitListItem from './HabitListItem.vue';
 const emits = defineEmits({'select:habit':(ev)=>{return true;}})
 
@@ -17,6 +17,26 @@ const habitList = reactive([
         count: 365
     },
 ]);
+
+const fetchHabits = async() => {
+    try{
+        const response = await fetch('/habit');
+        const json = await response.json();
+        habitList.length = 0;
+        if (Array.isArray(json)){
+            habitList.push(...json)
+        }{
+            habitList.push(json)
+        }
+    }
+    catch(err){
+        console.log(err);
+    }
+}
+
+onMounted(()=>{
+    fetchHabits();
+})
 
 const deleteHandler = (idx) =>{
     habitList.splice(idx,1)

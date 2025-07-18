@@ -10,10 +10,48 @@ watch(() => {
     },(newVal) => {
     label.value = `${newVal?.name} ${newVal?.description}`
 },{deep: true,immediate: true})
+
+const postHabit = async() =>{
+    fetch('/habit',{
+        method:'POST',
+        body:JSON.stringify(habit.value),
+        headers:{
+            'accept':'application/json',
+            'content-type':'application/json'
+        }
+    })
+    .catch(error =>{
+        console.warn(error)
+    })
+}
+
+const putHabit = () =>{
+    fetch('/habit/' + id,{
+        method:'PUT',
+        body:JSON.stringify(habit.value),
+        headers:{
+            'accept':'application/json',
+            'content-type':'application/json'
+        }
+    })
+    .catch(error =>{
+        console.warn(error)
+    })
+}
+
+const submitHandler = () =>{
+    if(habit.id!=null){
+        putHabit();
+    }
+    else{
+        postHabit();
+    }
+}
+
 </script>
 <template>
     <div class="container">
-        <form>
+        <form @submit="">
             <h1>Трекер привычек</h1>
             {{ label }}
             <div>
